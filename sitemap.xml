@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://riquelmes.com/categories/</loc>
+    <loc>https://nianrici.github.io/categories/</loc>
   </url><url>
-    <loc>https://riquelmes.com/posts/how_to_deploy_hugo_github_pages/</loc>
+    <loc>https://nianrici.github.io/posts/how_to_deploy_hugo_github_pages/</loc>
   </url><url>
-    <loc>https://riquelmes.com/</loc>
+    <loc>https://nianrici.github.io/</loc>
   </url><url>
-    <loc>https://riquelmes.com/posts/</loc>
+    <loc>https://nianrici.github.io/posts/</loc>
   </url><url>
-    <loc>https://riquelmes.com/tags/</loc>
+    <loc>https://nianrici.github.io/tags/</loc>
   </url>
 </urlset>
