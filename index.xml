@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Le Blog</title>
+    <link>https://riquelmes.com/</link>
+    <description>Recent content on Le Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es-es</language><atom:link href="https://riquelmes.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cómo crear un blog usando Hugo y Github Pages</title>
+      <link>https://riquelmes.com/posts/how_to_deploy_hugo_github_pages/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://riquelmes.com/posts/how_to_deploy_hugo_github_pages/</guid>
+      <description>En esta entrada voy a explicar como montar un blog como este. Si has llegado hasta aquí, es porque no te hace falta mucha más información, ni necesitas que te vendan el método. Casi seguro que sólo quieres que te digan el cómo para comparar si te renta hacerlo así o si quieres/necesitas algo diferente.
+ Instalar Hugo en el PC Crear 2 repositorios en Github:  Un repositorio llamado Blog Un repositorio llamado {$github_username}.</description>
+    </item>
+    
+  </channel>
+</rss>

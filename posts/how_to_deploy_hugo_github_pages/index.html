@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		
+
+		<title>Cómo crear un blog usando Hugo y Github Pages</title>
+
+		
+		<link rel="stylesheet" href="https://riquelmes.com/css/colors-dark.min.87553b07be1b402a4c4b809e22493495fc9911b1852f1d5f59606cf9d3c45845.css">
+
+		
+	</head>
+	<body>
+		<header id="header">
+			<h1><a href="https://riquelmes.com/">Le Blog</a></h1>
+			<p></p>
+		</header>
+
+		<div id="page">
+			<div id="sidebar">
+				<nav>
+	
+</nav>
+
+			</div>
+
+			<div id="content">
+				
+	<article class="post">
+		<h1><a href="https://riquelmes.com/posts/how_to_deploy_hugo_github_pages/">Cómo crear un blog usando Hugo y Github Pages</a> </h1>
+
+		<div class="post-content"><p>En esta entrada voy a explicar como montar un blog como este. Si has llegado hasta aquí, es porque no te hace falta mucha más información, ni necesitas que te vendan el método. Casi seguro que sólo quieres que te digan el cómo para comparar si te renta hacerlo así o si quieres/necesitas algo diferente.</p>
+<div class="toc">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#instalar-hugo-en-el-pc">Instalar Hugo en el PC</a></li>
+    <li><a href="#crear-2-repositorios-en-github">Crear 2 repositorios en Github:</a>
+      <ul>
+        <li><a href="#un-repositorio-llamado-blog">Un repositorio llamado Blog</a></li>
+        <li><a href="#un-repositorio-llamado-github_usernamegithubio">Un repositorio llamado {$github_username}.github.io</a></li>
+      </ul>
+    </li>
+    <li><a href="#clonar-el-repositorio-blog-en-el-pc">Clonar el repositorio Blog en el PC</a></li>
+    <li><a href="#crear-el-blog-dentro-de-la-carpeta-del-repositorio">Crear el blog dentro de la carpeta del repositorio</a></li>
+    <li><a href="#seleccionar-un-tema-e-instalarlo-opcional-pero-recomendable">Seleccionar un tema e instalarlo (opcional, pero recomendable)</a>
+      <ul>
+        <li><a href="#ir-a-la-web-de-los-temas">Ir a la web de los temas</a></li>
+        <li><a href="#instalar-el-tema">Instalar el tema</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuración-del-blog-configtoml">Configuración del Blog (config.toml)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#preview">Preview</a></li>
+    <li><a href="#uso-de-los-repos">Uso de los repos</a>
+      <ul>
+        <li><a href="#repo-de-la-url-del-blog">Repo de la url del blog</a></li>
+        <li><a href="#carpeta-del-blog">Carpeta del blog</a></li>
+      </ul>
+    </li>
+    <li><a href="#verificamos-el-trabajo-realizado">Verificamos el trabajo realizado</a></li>
+  </ul>
+</nav>
+</div>
+
+<h2 id="instalar-hugo-en-el-pc">Instalar Hugo en el PC</h2>
+<p>Esto dependerá del sistema operativo o de la distribución que uses. En mi caso, al usar una distro GNU Linux basada en Archlinux, sólo tendré que hacer:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syu <span style="color:#f92672">&amp;&amp;</span> sudo pacman -S hugo
+</code></pre></div><p>Otra opción más genérica sería clonar el repositorio de github y seguir las instrucciones de los creadores:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/gohugoio/hugo.git
+</code></pre></div><p>Una vez instalado, procederemos con los siguientes pasos.</p>
+<h2 id="crear-2-repositorios-en-github">Crear 2 repositorios en Github:</h2>
+<p>Ahora toca coger el navegador, ir hasta nuestra página de Github y crear 2 repositorios: uno para almacenar el código generado por Hugo y el otro para deployear el blog.</p>
+<h3 id="un-repositorio-llamado-blog">Un repositorio llamado Blog</h3>
+<p>Crearemos el repositorio donde almacenaremos el código del blog (los archivos en Markdown, nuestros pequeños upgrades a los temas originales, etc&hellip;) y en un alarde de imaginación, lo llamaremos <strong>blog</strong>, para que no nos liemos.</p>
+<h3 id="un-repositorio-llamado-github_usernamegithubio">Un repositorio llamado {$github_username}.github.io</h3>
+<p>Una vez creado el repositorio <strong>blog</strong> crearemos el otro, que será donde al final subamos los archivos estáticos generados por Hugo. El nombre será nuestro usuario de github y el dominio .github.io (piensa que si no dispones de un dominio propio, esta será la URL definitiva, por lo que no compliques el tema demasiado)</p>
+<h2 id="clonar-el-repositorio-blog-en-el-pc">Clonar el repositorio Blog en el PC</h2>
+<p>Sin más misterios, clonaremos nuestro repositorio <strong>blog</strong> en nuestro PC:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/$github_username/blog.git
+</code></pre></div><blockquote>
+<p>Nota: ya se que no hace falta que lo diga, pero cuando pongo <em>$github_username</em> quiero decir <strong>tu nombre de tu usuario de Github tuyo propio único e intransferible</strong>&hellip;</p>
+</blockquote>
+<h2 id="crear-el-blog-dentro-de-la-carpeta-del-repositorio">Crear el blog dentro de la carpeta del repositorio</h2>
+<p>Ya clonado el repositorio del blog en local, pasamos a crear el blog con Hugo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">hugo</span> <span style="color:#a6e22e">new</span> <span style="color:#a6e22e">site</span> <span style="color:#a6e22e">nombredelblog</span>
+</code></pre></div><p>Este comando creará la estructura de carpetas y los archivos mínimos para montar el blog. Si quieres saber más sobre la estructura que usa Hugo, en su página web encontrarás documentación por un tubo, bien explicada y organizada.</p>
+<h2 id="seleccionar-un-tema-e-instalarlo-opcional-pero-recomendable">Seleccionar un tema e instalarlo (opcional, pero recomendable)</h2>
+<p>Con el tema por defecto, se puede ir tirando&hellip; pero si en realidad quieres hacer algo diferente y menos genérico, toca buscar, comparar y descargar uno de los múltiples temas que encontrarás por la red.</p>
+<h3 id="ir-a-la-web-de-los-temas">Ir a la web de los temas</h3>
+<p><a href="https://themes.gohugo.io/">Aquí</a> hay una lista de temas gratuitos, con sus instrucciones y todo.</p>
+<h3 id="instalar-el-tema">Instalar el tema</h3>
+<p>Los pasos a seguir pueden ir desde hacer un <em>wget/curl</em> de una carpeta remota a clonar un repositorio de github en el que se encuentre alojado el tema.</p>
+<p>Ya instalado, puedes meter las manos bajo el capó y modificar los .css, la estructura de las plantillas, etc&hellip; siempre y cuando sepas lo que haces y que no le temas a tener que volver a instalar el tema de nuevo (lo que implicaría como mucho, borrar la carpeta del tema y volver a clonar el repositorio desde donde lo descargaste en un principio).</p>
+<h2 id="configuración-del-blog-configtoml">Configuración del Blog (config.toml)</h2>
+<p>El archivo config.toml contiene información de la configuración relevante para la página, tal como:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#34;https://foo.com/&#34;</span>
+<span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#34;es-es&#34;</span>
+<span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;My Hugo Site&#34;</span>
+<span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;TheTheme&#34;</span>
+</code></pre></div><p>Esta información es la que viene por defecto y deberá ser reemplazada por la nuestra.</p>
+<h1 id="creación-de-la-primera-entrada">Creación de la primera entrada</h1>
+<p>La lógica nos dice que lo suyo sería crear el archivo directamente en la carpeta de content y puerta (que podría hacerse), pero para no dejarnos nada en la cabecera del archivo que contiene la entrada, la crearemos así:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">hugo</span> <span style="color:#a6e22e">new</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">/</span><span style="color:#a6e22e">primera_entrada</span>.<span style="color:#a6e22e">md</span>
+</code></pre></div><p>Esto creará el archivo en la carpeta correspondiente, creando la cabecera con información de la autoría, taxonomía, etiquetas o cualquiera de las múltiples opciones que se pueden añadir, además de las estándard y que podrá ser editado usando el editor que se desee (vim, emacs, notepad++, etc&hellip;) y en el que se usará el lenguaje por marcas Markdown, pero la versión de Github (si, hay varias versiones, pero esta está <a href="https://guides.github.com/features/mastering-markdown/">ampliamente documentada</a>).</p>
+<h2 id="preview">Preview</h2>
+<p>Una vez rellenada la primera entrada, ejecutaremos el siguiente comando, el cual montará un servidor que sólo mostrará las entradas que estén marcadas en la cabecera como <code>draft = true</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">hugo</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">D</span> 
+</code></pre></div><p>Accederemos a <code>localhost:1313</code> para ver como queda, y así poder proceder a cambiar la sintaxis, los css del tema (o cambiar el tema si procediese), etc&hellip;</p>
+<h2 id="uso-de-los-repos">Uso de los repos</h2>
+<p>Vale, ya tenemos la entrada preparada, nos gusta como queda todo y queremos presentársela al mundo. Estos son los pasos a seguir:</p>
+<h3 id="repo-de-la-url-del-blog">Repo de la url del blog</h3>
+<p>Empezaremos con el repositorio con la url y vamos a:</p>
+<ol>
+<li>Clonar el repositorio</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/$github_username/$github_username.github.io.git
+</code></pre></div><ol start="2">
+<li>Crear una rama &ldquo;main&rdquo;</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd  $github_username.github.io
+git checkout -b main
+</code></pre></div><ol start="3">
+<li>Generar un README.md (puede estar vacío)</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">touch README.md
+</code></pre></div><ol start="4">
+<li>Crear el primer commit</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add .
+git commit -m <span style="color:#e6db74">&#34;añado readme&#34;</span>
+</code></pre></div><ol start="5">
+<li>Subirlo (git push)</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git push origin main
+</code></pre></div><p>Hecho esto, seguiremos con el repositorio donde almacenaremos el código.</p>
+<h3 id="carpeta-del-blog">Carpeta del blog</h3>
+<p>Iremos a la carpeta generada por hugo con el blog y donde están las carpetas de Hugo y el archivo config.toml y seguiremos los siguientes pasos (venga, que ya queda poco):</p>
+<ol>
+<li>Creamos un submódulo del repo con la url del blog, que enlazará la carpeta public, que es donde se genera la página una vez Hugo la procesa.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git submodule add -b main  https://github.com/$github_username/$github_username.github.io.git public
+</code></pre></div><ol start="2">
+<li>Generar los archivos estáticos (ojito, hay que quitar la opción de <code>draft = true</code> de la cabezera del/los post/s antes de ejecutar el siguiente paso!)</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#a6e22e">hugo</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">D</span>
+</code></pre></div><ol start="3">
+<li>Si todo ha ido como debería, verificar los ficheros creados en la carpeta <code>public</code> (que será la que subamos al repo con la url del blog y que contendrá la estructura final del sitio)</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd public
+ls
+</code></pre></div><p>Ahí deberían aparecer cosas tales como un <code>index.html</code>, varias carpetas con nombres lógicos dentro de una estructura de carpetas de una web, etc&hellip;
+4. Subimos el contenido de la carpeta Public</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add .
+git commit -m <span style="color:#e6db74">&#34;commit inicial&#34;</span>
+git push origin main
+</code></pre></div><h2 id="verificamos-el-trabajo-realizado">Verificamos el trabajo realizado</h2>
+<p>Para finiquitar, miraremos que el repositorio de contenga lo mismo que la carpeta public y si nos parece correcto, ya podríamos visitar nuestro blog en la url/public</p>
+</div>
+
+		<p class="meta">Posted on <span class="postdate">01. January 0001</span></p>
+	</article>
+
+			</div>
+
+			<footer id="footer">
+				<p class="copyright">
+					
+						Powered by <a href="https://gohugo.io/">Hugo</a> and the
+						<a href="https://github.com/bake/solar-theme-hugo">Solar</a>-theme.
+					
+				</p>
+			</footer>
+		</div>
+
+		
+	</body>
+</html>
